@@ -80,6 +80,14 @@ Buildings
 		on tick:yield 0.1 bug
 		unlocked
 
+    *console.log
+        name:console.log
+        desc:Javascript needs debugging too.<//><b>Effect:</b><.>Produces 1 bug every 2 seconds.
+        icon:icons[3,0]
+        cost:99 bugs
+        on tick:yield 0.5 bugs
+        req:99 bugs:earned
+
 Upgrades
 	*TEMPLATE
 		on click:anim glow
@@ -102,19 +110,17 @@ Upgrades
 		desc:You need a lot of ram for debugging!<//><b>Effect:</b><.>echo production x2<.
 		icon:icons[2,0] icons[3,0]
 		cost:1000 bugs
-		passive:multiply yield of cage by 2
-		passive:multiply yield of hutch by 2
-		passive:multiply yield of coop by 2
+		passive:multiply yield of echo by 2
 		req:(echos>=10)
 
-	//golden carrot upgrades
+	//ticket upgrades
 	
 	*goldenTouch
 		name:New Jira Project
 		desc:All good bug hunts start with a jira board.
 		icon:icons[2,5]
-		cost:1 goldenCarrot
-		req:1 goldenCarrot:earned
+		cost:1 ticket
+		req:1 ticket:earned
 
 Achievements
 	*TEMPLATE
