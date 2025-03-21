@@ -1,5 +1,5 @@
-Engine Bug Clicker
-  name:Engine Bug Clicker
+Let's make a game!
+	name:Engine Bug Clicker
 	by:minituex & Flips
 	desc:Die Engine ist perfekt!
 	created:21/3/2025
