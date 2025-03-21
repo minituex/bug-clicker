@@ -1,1 +1,100 @@
-#here be dragons
+Engine Bug Clicker
+  name:Engine Bug Clicker
+	by:minituex & Flips
+	desc:Die Engine ist perfekt!
+	created:21/3/2025
+	updated:21/3/2025
+	version:1
+
+Settings
+	background:stuff/meadow.jpg
+	building cost increase:115%
+	building cost refund:50%
+	spritesheet:icons, 48 by 48, stuff/bunnyIcons.png
+	stylesheet:stuff/bigBlue.css
+
+Layout
+	use default
+		
+Buttons
+	*bunnyButton
+		name:Make a bunny
+		desc:Click this little bunny to get more bunnies!
+		on click:anim icon wobble
+		on click:yield 1 bunny
+		on click:if (have goldenTouch and chance(1%)) yield 1 goldenCarrot
+		icon:stuff/bunny.png
+		no text
+		class:bigButton hasFlares
+		icon class:shadowed
+		tooltip origin:bottom
+		tooltip class:red
+		
+Resources
+	*bunny|bunnies
+		name:Bunny|Bunnies
+		desc:These are your bunnies. You can use them to purchase things. Your goal is to have as many bunnies as possible!
+		icon:icons[0,0]
+		class:noBackground
+		show earned
+		
+	*goldenCarrot|goldenCarrots
+		name:Golden carrot|Golden carrots
+		desc:These shiny carrots are terribly rare, terribly precious and terribly delicious!
+		icon:icons[0,1]
+		class:noBackground
+		hidden when 0
+		
+Shinies
+	*luckyBunny
+		on click:log Woop
+		movement:onRight moveLeft fade bounce:0.05
+		frequency:60
+		frequency variation:30
+		icon:stuff/luckyBunny.png
+		class:bigButton
+		on click:
+			$boost=1
+			if (have clover) $boost=4
+			if (chance(25%))
+				//get at least 7, or between 1 and 3 minutes of our bunny production
+				$amount=max(7,random(bunnies:ps*60*1,bunnies:ps*60*3))*$boost
+				toast The lucky bunny grants you<//><b>[$amount] bunnies</b>.
+				yield $amount bunnies
+			else
+				$amount=1*$boost
+				toast The lucky bunny grants you<//><b>[$amount] golden carrot[s?$amount]</b>!
+				yield $amount goldenCarrot
+			end
+		end
+
+Buildings
+	*TEMPLATE
+		on click:anim glow
+		
+	*cage|cages
+		name:Rabbit cage|Rabbit cages
+		desc:A tiny little cage.<//><b>Effect:</b><.>Produces 1 rabbit every 10 seconds.
+		icon:icons[3,0]
+		cost:15 bunnies
+		on tick:yield 0.1 bunny
+		unlocked
+
+		cost increase:105%
+		
+Upgrades
+	*TEMPLATE
+		on click:anim glow
+	
+		
+Achievements
+	*TEMPLATE
+		on click:anim glow
+		
+	*bunnyAchiev1
+		name:Run rabbit run
+		desc:Have <b>1</b> bunny.
+		req:1 bunny
+		icon:icons[2,4] icons[0,2] icons[0,6]
+
+		
